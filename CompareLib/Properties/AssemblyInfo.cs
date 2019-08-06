@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CompareLib")]
+[assembly: AssemblyTitle("DusanCompareLib")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("wuh")]
-[assembly: AssemblyProduct("CompareLib")]
+[assembly: AssemblyProduct("DusanCompareLib")]
 [assembly: AssemblyCopyright("Copyright © wuh 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 
 using CompareDef;
-using CompareLib;
+using DusanCompareLib;
 
 namespace xmlCompare.ViewModel
 {
@@ -45,11 +45,6 @@ namespace xmlCompare.ViewModel
 
         public ObservableCollection<string> differences { get; set; } = new ObservableCollection<string>();
 
-        //public ShellVM()
-        //{
-        //    _comparer = new DusanCompareDefinition();
-        //}
-
         public ShellVM(ICompareDefinition comparer)
         {
             this._comparer = comparer;
@@ -64,7 +59,7 @@ namespace xmlCompare.ViewModel
         {
             Console.WriteLine("Comparing files");
 
-            foreach (var item in _comparer.Compare(_lines1, _lines2))
+            foreach (var item in _comparer.GetDifferences(_lines1, _lines2))
             {
                 differences.Add(item);
             }

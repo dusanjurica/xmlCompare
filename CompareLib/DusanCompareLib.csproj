@@ -7,8 +7,8 @@
     <ProjectGuid>{20F99E53-DFBC-4D88-99F3-D3B9347445A6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CompareLib</RootNamespace>
-    <AssemblyName>CompareLib</AssemblyName>
+    <RootNamespace>DusanCompareLib</RootNamespace>
+    <AssemblyName>DusanCompareLib</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

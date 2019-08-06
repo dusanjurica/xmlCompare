@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Unity;
 using CompareDef;
-using CompareLib;
+using DusanCompareLib;
 
 namespace xmlCompare
 {
