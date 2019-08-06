@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:xmlCompare"
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:xmlCompare.ViewModel"
-        Title="Safetica thingy" Height="356.321" Width="534.481">
+        Title="Safetica thingy" Height="356.321" Width="534.481" WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Menu VerticalAlignment="Top" HorizontalAlignment="Stretch">

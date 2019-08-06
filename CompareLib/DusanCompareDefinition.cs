@@ -10,19 +10,54 @@ namespace DusanCompareLib
 {
     public class DusanCompareDefinition : ICompareDefinition
     {
-        public List<string> GetDifferences(List<string> lines1, List<string> lines2)
+        public IEnumerable<string> GetDifferences(List<string> lines1, List<string> lines2)
         {
-            return new List<string>
+            // pokud maji byt sekvence stejne, vyuziju extension SequenceEqual
+            if (lines1.SequenceEqual(lines2))
+                yield break;
+
+            // pokud jsou sekvence stejne dlouhe, projedu je jednoduchym for cyklem
+            else if (lines1.Count == lines2.Count)
             {
-                "Difference 1",
-                "Difference 2",
-                "Difference 3",
-                "Difference 4"
-            };
+                int delka = lines1.Count;
+                for (int i = 0; i < delka; i++)
+                {
+                    if (!lines1[i].Equals(lines2[i]))
+                    {
+                        yield return $"{lines1[i]} => {lines2[i]}";
+                    }
+                }
+            }
 
-            // make it pass, just to make testers keep their mouth shut
+            // pokud delky sekvenci nejsou stejne
+            else if (lines1.Count != lines2.Count)
+            {
+                // zajisti pocty radku obou sekvenci a rozdil mezi nimi
+                int delsi;
+                int kratsi;
+                int delta;
 
-            //return new List<string> { "d => e" };
+                if (lines1.Count > lines2.Count)
+                {
+                    delsi = lines1.Count;
+                    kratsi = lines2.Count;
+                }
+                else
+                {
+                    delsi = lines2.Count;
+                    kratsi = lines1.Count;
+                }
+
+                delta = delsi - kratsi;
+
+                // todo : iterace
+
+                yield return "Difference 1";
+                yield return "Difference 2";
+                yield return "Difference 3";
+                yield return "Difference 4";
+            }
+                
         }
     }
 }

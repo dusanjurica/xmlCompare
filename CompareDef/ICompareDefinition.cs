@@ -8,6 +8,6 @@ namespace CompareDef
 {
     public interface ICompareDefinition
     {
-        List<string> GetDifferences(List<string> lines1, List<string> lines2);
+        IEnumerable<string> GetDifferences(List<string> lines1, List<string> lines2);
     }
 }

@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 
 using CompareDef;
-using DusanCompareLib;
 
 namespace xmlCompare.ViewModel
 {
@@ -40,8 +39,8 @@ namespace xmlCompare.ViewModel
 
         private ICompareDefinition _comparer;
 
-        private List<string> _lines1 = new List<string>();
-        private List<string> _lines2 = new List<string>();
+        private List<string> _lines1 = new List<string> { "b", "c", "d" };
+        private List<string> _lines2 = new List<string> { "b", "c", "x" };
 
         public ObservableCollection<string> differences { get; set; } = new ObservableCollection<string>();
 

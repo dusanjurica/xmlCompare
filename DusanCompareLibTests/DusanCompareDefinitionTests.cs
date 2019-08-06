@@ -50,7 +50,86 @@ namespace DusanCompareLib.Tests
 
             List<string> diffs = new List<string>();
 
-            CollectionAssert.AreEqual(diffs, dComparer.GetDifferences(l1, l2));
+            CollectionAssert.AreEqual(diffs, dComparer.GetDifferences(l1, l2).ToList());
+        }
+
+        [TestMethod()]
+        public void GetDifferencesTest_differentSidesSameLength_expectsListWithDifferences()
+        {
+            l1 = new List<string>
+            {
+                "a",
+                "b",
+                "c"
+            };
+
+            l2 = new List<string>
+            {
+                "a",
+                "b",
+                "d"
+            };
+
+            List<string> diffs = new List<string> { "c => d" };
+
+            CollectionAssert.AreEqual(diffs, dComparer.GetDifferences(l1, l2).ToList());
+        }
+
+        [TestMethod()]
+        public void GetDifferences_almostSameSidesDifferentLengths_expectsListWithDifferences()
+        {
+            l1 = new List<string>
+            {
+                "a",
+                "b",
+                "c",
+                "e"
+            };
+
+            l2 = new List<string>
+            {
+                "a",
+                "b",
+                "c",
+                "d",
+                "e"
+            };
+
+            List<string> diffs = new List<string>
+            {
+                "extra line with [d] on it"
+            };
+
+            CollectionAssert.AreEqual(diffs, dComparer.GetDifferences(l1, l2).ToList());
+        }
+
+        [TestMethod()]
+        public void GetDifferences_differentSidesDifferentLengths_expectsListWithDifferences()
+        {
+            l1 = new List<string>
+            {
+                "a",
+                "x",
+                "c",
+                "e"
+            };
+
+            l2 = new List<string>
+            {
+                "a",
+                "b",
+                "c",
+                "d",
+                "e"
+            };
+
+            List<string> diffs = new List<string>
+            {
+                "x => b",
+                "l2 has extra line with `d` on it"
+            };
+
+            CollectionAssert.AreEqual(diffs, dComparer.GetDifferences(l1, l2).ToList());
         }
     }
 }
