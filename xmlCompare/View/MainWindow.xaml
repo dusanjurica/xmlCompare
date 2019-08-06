@@ -1,0 +1,26 @@
+﻿<Window x:Class="xmlCompare.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:xmlCompare"
+        mc:Ignorable="d"
+        xmlns:vm="clr-namespace:xmlCompare.ViewModel"
+        Title="Safetica thingy" Height="356.321" Width="534.481">
+    <Window.DataContext>
+        <vm:ShellVM />
+    </Window.DataContext>
+
+    <Grid>
+        <Menu VerticalAlignment="Top" HorizontalAlignment="Stretch">
+            <MenuItem Header="File">
+                <MenuItem Header="Load files" Command="{Binding LoadFilesCommand}" />
+            </MenuItem>
+            <MenuItem Header="Action menu" >
+                <MenuItem Header="Compare files" Command="{Binding CompareCommand}" />
+            </MenuItem>
+        </Menu>
+        <ListBox x:Name="textBox" HorizontalAlignment="Left" Height="292" Margin="10,26,0,0" 
+                 ItemsSource="{Binding Path=differences, Mode=Default, UpdateSourceTrigger=Default}" VerticalAlignment="Top" Width="508"/>
+    </Grid>
+</Window>
