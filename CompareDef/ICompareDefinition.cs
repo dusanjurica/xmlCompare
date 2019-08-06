@@ -8,6 +8,6 @@ namespace CompareDef
 {
     public interface ICompareDefinition
     {
-        List<string> Compare(List<string> lines1, List<string> lines2);
+        List<string> GetDifferences(List<string> lines1, List<string> lines2);
     }
 }
