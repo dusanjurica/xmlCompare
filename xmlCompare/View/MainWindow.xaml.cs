@@ -13,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using Unity;
+using CompareDef;
+using xmlCompare.ViewModel;
+
 namespace xmlCompare
 {
     /// <summary>
@@ -20,9 +24,26 @@ namespace xmlCompare
     /// </summary>
     public partial class MainWindow : Window
     {
+        // podle stackoverflow
+        [Dependency]
+        public ShellVM vm { set { DataContext = value; } }
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
+
+        // moje tvorba
+        //public ShellVM vm { get; }
+
+        //public MainWindow(ICompareDefinition compareDefinition)
+        //{
+        //    InitializeComponent();
+
+        //    vm = new ShellVM(compareDefinition);
+
+        //    this.DataContext = vm;
+        //}
     }
 }
