@@ -232,5 +232,22 @@ namespace DusanCompareLib.Tests
             CollectionAssert.AreEqual(diffs, dComparer.GetDifferences(l1, l2).ToList());
         }
 
+        [TestMethod()]
+        public void GetDifferencesTest_loadTwoSimilarFiles_expectsListWithDifferences()
+        {
+            List<string> l1 = File.ReadAllLines(@"../../lines1.txt").ToList();
+            List<string> l2 = File.ReadAllLines(@"../../lines2.txt").ToList();
+
+            List<string> diffs = new List<string>
+            {
+                // prazdny, ponevadz poradne nevim co v tech souborech je
+                "<url value=\"*.www.centrum.cz/*\"/> => <url value=\"*.www.google.cz/*\"/>",
+                "<hide>0</hide> => <hide>1</hide>",
+                "difference at the line 36 having value of `<extra>extra line</extra>`"
+            };
+
+            CollectionAssert.AreEqual(diffs, dComparer.GetDifferences(l1, l2).ToList());
+        }
+
     }
 }

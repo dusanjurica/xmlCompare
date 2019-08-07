@@ -78,6 +78,9 @@ namespace xmlCompare.ViewModel
 
         void LoadFilesAction()
         {
+            _lines1 = System.IO.File.ReadAllLines(@"../../../DusanCompareLibTests/lines1.txt").ToList();
+            _lines2 = System.IO.File.ReadAllLines(@"../../../DusanCompareLibTests/lines2.txt").ToList();
+
             Console.WriteLine("Loading files");
         }
 
