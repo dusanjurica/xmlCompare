@@ -64,27 +64,37 @@ namespace DusanCompareLib
 
                 Console.WriteLine($"pocatecni delta = {delta}");
 
-                for (int I = 0, J = 0; I < kratsiPocet; I++, J++/*, Console.WriteLine($"I={I}, J={J}")*/)
+                for (int I = 0, J = 0; I < kratsiPocet; I++, J++)
                 {
                     if (!kratsiList[I].Equals(delsiList[J]))
                     {
                         // v okamziku, kdy se radky nerovnaji, tak se posouvej v delsim listu o 1 az do delta a hledej shodu
                         // v pripade ze nenajdes shodu, byly nektere radky vlozeny a nektere byly pouze upraveny
-                        // tady bych se oprel o hledani podobnosti na zaklade napr. Levenshteinova algoritmu
 
                         if (flag0 > 0)
                         {
-                            for ( /*pracuju s inicializovanou promennou*/ ; J <= (I+delta); J++, flag0--/*, Console.WriteLine($"J={J}, delta={delta}")*/)
+                            for (int helpJ = J; helpJ <= (I + delta); helpJ++)
                             {
-                                if (!kratsiList[I].Equals(delsiList[J]))
+                                if (!kratsiList[I].Equals(delsiList[helpJ]) && kratsiList[I].Equals(delsiList[helpJ + 1]))
+                                {
+                                    flag0 -= 1;
 
                                     yield return $"difference at the line {J + 1} having value of `{delsiList[J]}`";
 
-                                else
+                                    J = helpJ+1;
 
                                     break;
-                            } 
+                                }
+
+                                else if (!kratsiList[I].Equals(delsiList[J]) && !kratsiList[I].Equals(delsiList[J + 1]))
+                                {
+                                    yield return $"{kratsiList[I]} => {delsiList[J]}";
+
+                                    break;
+                                }
+                            }
                         }
+
                         else
                         {
                             yield return $"{kratsiList[I]} => {delsiList[J]}";

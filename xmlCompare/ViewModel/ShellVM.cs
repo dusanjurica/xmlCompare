@@ -41,32 +41,32 @@ namespace xmlCompare.ViewModel
 
         private List<string> _lines1 = new List<string>
         {
+            "a",
             "b",
             "c",
             "d",
             "e",
             "f",
-            "b",
-            "c",
-            "d",
-            "e",
-            "f"
+            "g",
+            "h",
+            "i",
+            "k"
         };
 
         private List<string> _lines2 = new List<string>
         {
+            "a",
             "b",
+            "x0", // extra element
             "c",
-            "extra element",
-            "d",
+            "d2", // change
             "e",
             "f",
-            "b",
-            "extra element",
-            "c",
-            "d",
-            "e",
-            "f"
+            "g",
+            "h",
+            "x1", // extra element
+            "i",
+            "k"
         };
 
         public ObservableCollection<string> differences { get; set; } = new ObservableCollection<string>();
