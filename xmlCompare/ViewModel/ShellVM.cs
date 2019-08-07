@@ -39,8 +39,35 @@ namespace xmlCompare.ViewModel
 
         private ICompareDefinition _comparer;
 
-        private List<string> _lines1 = new List<string> { "b", "c", "d" };
-        private List<string> _lines2 = new List<string> { "b", "c", "x" };
+        private List<string> _lines1 = new List<string>
+        {
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f"
+        };
+
+        private List<string> _lines2 = new List<string>
+        {
+            "b",
+            "c",
+            "extra element",
+            "d",
+            "e",
+            "f",
+            "b",
+            "extra element",
+            "c",
+            "d",
+            "e",
+            "f"
+        };
 
         public ObservableCollection<string> differences { get; set; } = new ObservableCollection<string>();
 

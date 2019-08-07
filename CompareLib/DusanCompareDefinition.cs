@@ -33,31 +33,65 @@ namespace DusanCompareLib
             else if (lines1.Count != lines2.Count)
             {
                 // zajisti pocty radku obou sekvenci a rozdil mezi nimi
-                int delsi;
-                int kratsi;
+                int delsiPocet;
+                int kratsiPocet;
                 int delta;
+                int flag0;
+
+                List<string> kratsiList;
+                List<string> delsiList;
 
                 if (lines1.Count > lines2.Count)
                 {
-                    delsi = lines1.Count;
-                    kratsi = lines2.Count;
+                    delsiPocet = lines1.Count;
+                    kratsiPocet = lines2.Count;
+
+                    delsiList = lines1;
+                    kratsiList = lines2;
                 }
                 else
                 {
-                    delsi = lines2.Count;
-                    kratsi = lines1.Count;
+                    delsiPocet = lines2.Count;
+                    kratsiPocet = lines1.Count;
+
+                    delsiList = lines2;
+                    kratsiList = lines1;
                 }
 
-                delta = delsi - kratsi;
+                delta = delsiPocet - kratsiPocet;
 
-                // todo : iterace
+                flag0 = delta;
 
-                yield return "Difference 1";
-                yield return "Difference 2";
-                yield return "Difference 3";
-                yield return "Difference 4";
+                Console.WriteLine($"pocatecni delta = {delta}");
+
+                for (int I = 0, J = 0; I < kratsiPocet; I++, J++/*, Console.WriteLine($"I={I}, J={J}")*/)
+                {
+                    if (!kratsiList[I].Equals(delsiList[J]))
+                    {
+                        // v okamziku, kdy se radky nerovnaji, tak se posouvej v delsim listu o 1 az do delta a hledej shodu
+                        // v pripade ze nenajdes shodu, byly nektere radky vlozeny a nektere byly pouze upraveny
+                        // tady bych se oprel o hledani podobnosti na zaklade napr. Levenshteinova algoritmu
+
+                        if (flag0 > 0)
+                        {
+                            for ( /*pracuju s inicializovanou promennou*/ ; J <= (I+delta); J++, flag0--/*, Console.WriteLine($"J={J}, delta={delta}")*/)
+                            {
+                                if (!kratsiList[I].Equals(delsiList[J]))
+
+                                    yield return $"difference at the line {J + 1} having value of `{delsiList[J]}`";
+
+                                else
+
+                                    break;
+                            } 
+                        }
+                        else
+                        {
+                            yield return $"{kratsiList[I]} => {delsiList[J]}";
+                        }
+                    }
+                }
             }
-                
         }
     }
 }
